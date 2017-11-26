@@ -5,7 +5,6 @@ import cv2
 import scipy.misc
 import time
 
-
 headers = {
     # Request headers
     'Content-Type': 'application/octet-stream',
@@ -57,7 +56,9 @@ def test_api_with_webcam():
         with open("outfile.jpg", "rb") as imageFile:
             f = imageFile.read()
             b = bytearray(f)
+            print b
 
+        print "done"
         # with frame as imageFile:
         #     f1 = imageFile.read()
         #     b1 = bytearray(f1)
@@ -78,9 +79,9 @@ def test_api_with_webcam():
     cap.release()
     cv2.destroyAllWindows()
 
-
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
+
 
 test_api_with_webcam()
