@@ -170,11 +170,11 @@
                 console.log("call final");
                 setTimeout(function () {
                     finish();
-                }, 1500);
+                }, 1000);
             } else {
                 setTimeout(function () {
                     takepicture();
-                }, 1500);
+                }, 1000);
             }
         });
     }
