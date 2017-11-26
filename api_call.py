@@ -3,6 +3,7 @@ import urllib
 import os
 import cv2
 import scipy.misc
+import time
 
 
 headers = {
@@ -32,17 +33,23 @@ def image_2_emotion(threshold, body):
 
         conn.close()
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        # print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        print('something bad happened')
 
 
 def test_api_with_webcam():
     cap = cv2.VideoCapture(0)
-    while True:
-        # Capture frame-by-frame
+
+    limit = 24
+
+    for step in range(limit):
+        for i in xrange(20):
+            ret, frame = cap.read()
         ret, frame = cap.read()
 
         # Our operations on the frame come here
         # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # (thresh, im_bw) = cv2.threshold(gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
         # save image
         scipy.misc.imsave('outfile.jpg', frame)
@@ -50,6 +57,10 @@ def test_api_with_webcam():
         with open("outfile.jpg", "rb") as imageFile:
             f = imageFile.read()
             b = bytearray(f)
+
+        # with frame as imageFile:
+        #     f1 = imageFile.read()
+        #     b1 = bytearray(f1)
 
         body = b
 
@@ -60,6 +71,13 @@ def test_api_with_webcam():
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+        time.sleep(1)
+
+        # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+
 
     # When everything done, release the capture
     cap.release()
