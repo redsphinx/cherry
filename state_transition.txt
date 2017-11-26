@@ -1,0 +1,71 @@
+=============================================
+definitions
+=============================================
+
+2 agents:
+- bully
+bully has bully_state = {1,2,3,4}
+1 = cookie page 2
+2 = bully_emoji_2
+3 = bully_emoji_3
+4 = bully_emoji_4
+- user
+user has user_state = {1,2}
+1 = cookie page 1
+2 = smiling_emoji
+
+timer of 4 secs
+
+state_0:
+time = 0s
+bully = cookie page 2
+user = cookie page 1
+
+state_1:
+time = 1s
+bully = cookie page 2
+user = smiling
+
+state_2:
+time = 2s
+bully = bully_emoji_2
+user = smiling
+
+state_3:
+time = 3s
+bully = bully_emoji_3
+user = smiling
+
+state_4:
+time = 4s
+bully = bully_emoji_4
+user = smiling
+
+end_state:
+page 4
+
+=============================================
+logic
+=============================================
+start
+in state_0
+if smile_detected == True, go to state_1
+if smile_detected == False, go to state_0, set time = 0
+
+in state_1
+if smile_detected == True, go to state_2
+if smile_detected == False, go to state_0, set time = 0
+
+in state_2
+if smile_detected == True, go to state_3
+if smile_detected == False, go to state_0, set time = 0
+
+in state_3
+if smile_detected == True, go to state_4
+if smile_detected == False, go to state_0, set time = 0
+
+in state_4
+if smile_detected == True, go to end_state
+if smile_detected == False, go to state_0, set time = 0
+
+
