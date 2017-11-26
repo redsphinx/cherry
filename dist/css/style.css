@@ -56,8 +56,14 @@ body {
 }
 
 .smiley-button {
-    font-size: 128px;
     text-align: center;
+}
+
+.smiley-button a {
+    font-size: 128px;
+}
+.smiley-button span {
+    font-size:36px;
 }
 
 .state {
