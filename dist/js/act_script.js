@@ -44,6 +44,8 @@
 
             bully_state = next_bully_state;
             return [next_bully_state, next_victim_state];
+        } else {
+            return [-1, -1];
         }
     }
 
@@ -159,13 +161,21 @@
             var happy = is_result_happy(data);
             console.log(happy);
             if (happy) {
-                switch_state(1);
+                latest_state = switch_state(1);
             } else {
-                switch_state(-1);
+                latest_state = switch_state(-1);
             }
-            setTimeout(function () {
-                takepicture()
-            }, 2500);
+            console.log(latest_state);
+            if (latest_state[0] === 4 && latest_state[1] === 1) {
+                console.log("call final");
+                setTimeout(function () {
+                    finish();
+                }, 2500);
+            } else {
+                setTimeout(function () {
+                    takepicture();
+                }, 2500);
+            }
         });
     }
 
@@ -182,6 +192,10 @@
                 happiness > data[0]['scores']['sadness'] &&
                 happiness > data[0]['scores']['surprise'];
         }
+    }
+
+    function finish() {
+        window.location = "final.html?user=" + victim_smile;
     }
 
     // Set up our event listener to run the startup process
