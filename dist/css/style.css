@@ -88,3 +88,20 @@ body {
     font-size: 128px;
     text-align: center;
 }
+
+.state {
+    text-align: center;
+}
+
+.state_1 {
+    font-size: 384px;
+}
+.state_2 {
+    font-size: 288px;
+}
+.state_3 {
+    font-size: 192px;
+}
+.state_4 {
+    font-size: 96px;
+}
