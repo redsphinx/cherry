@@ -28,13 +28,11 @@
 
     <div class="row marketing">
         <div class="col-lg-6 smiley-button">
-            <a href="act.html">😈</a>
-
+            <a href="act.html?bully=😈">😈</a>
         </div>
 
         <div class="col-lg-6 smiley-button">
-            <a href="act.html">👿</a>
-
+            <a href="act.html?bully=👿">👿</a>
         </div>
     </div>
 
@@ -51,5 +49,22 @@
 <script>window.jQuery || document.write('<script src="dist/js/jquery-3.2.1.slim.min.js"><\/script>')</script>
 <script src="dist/js/popper.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
+<script>
+(function () {
+    function startup() {
+        var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('user')) {
+            var userEmoji = searchParams.get('user');
+        }
+
+        $(".smiley-button a").each(function(index) {
+            href = $(this).attr("href");
+            $(this).attr("href", (href + "&user=" + userEmoji));
+        });
+
+    }
+    window.addEventListener('load', startup, false);
+})();
+</script>
 </body>
 </html>
