@@ -1,0 +1,13 @@
+page 3
+we were in state 4
+
+page 4
+- user smily is big
+- bully smily disappears
+- at the bottom of the screen there is a text saying:
+
+Good job!
+Would you like to contact a professional?
+
+
+That last line in blue with underline as if it was a URL
